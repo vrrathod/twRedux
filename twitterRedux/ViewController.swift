@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     // MARK: - Sliding adjustment for Content View
     func showHamburgerMenu() {
         // TODO: move 300 to constants
-        self.contentViewXalignment.constant = -180;
+        self.contentViewXalignment.constant = -250;
     }
     
     func hideHamburgerMenu() {
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         return contentViewXalignment.constant != 0
     }
     
-    @IBAction func showHideMenu(sender: UIButton) {
+    @IBAction func showHideMenu(sender: UIBarButtonItem) {
         if isHamburgerMenuVisible() {
             hideHamburgerMenu()
         } else {
