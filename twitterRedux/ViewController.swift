@@ -8,16 +8,25 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+// View controller code
+class ViewController: UIViewController, HamburgerDelegate, ViewSwitcherDelegate {
     
     // MARK: - UI Outlets
     @IBOutlet weak var contentViewXalignment: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var menuOptions: HamburgerView!
+    
+    // MARK: - View Collection
+    var viewControllers : [UIViewController] = []
     
     
+    // MARK: - overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        menuOptions.setHamburgerDelegate(self)
+        menuOptions.setViewSwitcherDelegate(self)
+        
         hideHamburgerMenu()
     }
     
@@ -27,26 +36,57 @@ class ViewController: UIViewController {
     }
     
     
-    // MARK: - Sliding adjustment for Content View
+    // MARK: - Hamburger Delegate
     func showHamburgerMenu() {
         // TODO: move 300 to constants
         UIView.animateWithDuration(0.3, animations: {
-            self.contentViewXalignment.constant = -250;
+            self.contentViewXalignment.constant = (0 - self.menuOptions.frame.width)
             self.view.layoutIfNeeded()
         })
     }
     
     func hideHamburgerMenu() {
         UIView.animateWithDuration(0.3, animations: {
-            self.contentViewXalignment.constant = 0;
+            self.contentViewXalignment.constant = 0
             self.view.layoutIfNeeded()
         })
+    }
+    
+    //MARK: - View Switcher Delegate
+    func switchToViewAtIndex(index: NSInteger) {
+        if index < viewControllers.count {
+            activeViewController = self.viewControllers[index]
+        } else {
+            NSLog("View not found at \(index)")
+        }
+    }
+    
+    
+    //MARK: - Helper
+    var activeViewController: UIViewController? {
+        didSet(oldViewControllerOrNil) {
+            if let oldVC = oldViewControllerOrNil {
+                oldVC.willMoveToParentViewController(nil)
+                oldVC.view.removeFromSuperview()
+                oldVC.removeFromParentViewController()
+            }
+            
+            if let newVC = activeViewController {
+                self.addChildViewController(newVC)
+                newVC.view.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+                newVC.view.frame = self.contentView.frame
+                self.view.addSubview(newVC.view)
+                newVC.didMoveToParentViewController(self)
+            }
+        }
     }
     
     func isHamburgerMenuVisible() -> Bool {
         return contentViewXalignment.constant != 0
     }
     
+    
+    //MARK: - UI Interactions
     @IBAction func showHideMenu(sender: UIBarButtonItem) {
         if isHamburgerMenuVisible() {
             hideHamburgerMenu()
@@ -54,6 +94,7 @@ class ViewController: UIViewController {
             showHamburgerMenu()
         }
     }
+    
     @IBAction func didSwipe(sender: UISwipeGestureRecognizer) {
         if sender.direction == UISwipeGestureRecognizerDirection.Right {
             if !isHamburgerMenuVisible() {

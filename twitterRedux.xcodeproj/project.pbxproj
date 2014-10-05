@@ -13,6 +13,10 @@
 		373E98EE19E0867E00A80AFA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 373E98ED19E0867E00A80AFA /* Images.xcassets */; };
 		373E98F119E0867E00A80AFA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 373E98EF19E0867E00A80AFA /* LaunchScreen.xib */; };
 		373E98FD19E0867E00A80AFA /* twitterReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373E98FC19E0867E00A80AFA /* twitterReduxTests.swift */; };
+		377DDB8F19E0EB4600E2DC1A /* HamburgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377DDB8E19E0EB4600E2DC1A /* HamburgerView.swift */; };
+		377DDB9219E0EF0300E2DC1A /* HamburgerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377DDB9119E0EF0300E2DC1A /* HamburgerTableViewCell.swift */; };
+		377DDB9519E1010400E2DC1A /* HamburgerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377DDB9419E1010400E2DC1A /* HamburgerDelegate.swift */; };
+		377DDB9719E1011C00E2DC1A /* ViewSwitcherDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377DDB9619E1011C00E2DC1A /* ViewSwitcherDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		373E98F619E0867E00A80AFA /* twitterReduxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = twitterReduxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		373E98FB19E0867E00A80AFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		373E98FC19E0867E00A80AFA /* twitterReduxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = twitterReduxTests.swift; sourceTree = "<group>"; };
+		377DDB8E19E0EB4600E2DC1A /* HamburgerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerView.swift; sourceTree = "<group>"; };
+		377DDB9119E0EF0300E2DC1A /* HamburgerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerTableViewCell.swift; sourceTree = "<group>"; };
+		377DDB9419E1010400E2DC1A /* HamburgerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerDelegate.swift; sourceTree = "<group>"; };
+		377DDB9619E1011C00E2DC1A /* ViewSwitcherDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSwitcherDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +85,10 @@
 		373E98E319E0867E00A80AFA /* twitterRedux */ = {
 			isa = PBXGroup;
 			children = (
+				377DDB9319E100EF00E2DC1A /* Delegates */,
+				377DDB9019E0EEA000E2DC1A /* Views */,
+				377DDB8D19E0EAAA00E2DC1A /* ViewControllers */,
 				373E98E619E0867E00A80AFA /* AppDelegate.swift */,
-				373E98E819E0867E00A80AFA /* ViewController.swift */,
 				373E98EA19E0867E00A80AFA /* Main.storyboard */,
 				373E98ED19E0867E00A80AFA /* Images.xcassets */,
 				373E98EF19E0867E00A80AFA /* LaunchScreen.xib */,
@@ -110,6 +120,32 @@
 				373E98FB19E0867E00A80AFA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		377DDB8D19E0EAAA00E2DC1A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				373E98E819E0867E00A80AFA /* ViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		377DDB9019E0EEA000E2DC1A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				377DDB8E19E0EB4600E2DC1A /* HamburgerView.swift */,
+				377DDB9119E0EF0300E2DC1A /* HamburgerTableViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		377DDB9319E100EF00E2DC1A /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				377DDB9419E1010400E2DC1A /* HamburgerDelegate.swift */,
+				377DDB9619E1011C00E2DC1A /* ViewSwitcherDelegate.swift */,
+			);
+			name = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,8 +248,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				377DDB8F19E0EB4600E2DC1A /* HamburgerView.swift in Sources */,
 				373E98E919E0867E00A80AFA /* ViewController.swift in Sources */,
+				377DDB9519E1010400E2DC1A /* HamburgerDelegate.swift in Sources */,
 				373E98E719E0867E00A80AFA /* AppDelegate.swift in Sources */,
+				377DDB9719E1011C00E2DC1A /* ViewSwitcherDelegate.swift in Sources */,
+				377DDB9219E0EF0300E2DC1A /* HamburgerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +445,7 @@
 				373E990219E0867E00A80AFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		373E990319E0867E00A80AFA /* Build configuration list for PBXNativeTarget "twitterReduxTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +454,7 @@
 				373E990519E0867E00A80AFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
