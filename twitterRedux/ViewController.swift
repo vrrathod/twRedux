@@ -34,7 +34,7 @@ class ViewController: UIViewController, HamburgerDelegate, ViewSwitcherDelegate 
         // Lets load up view controllers
         var storyBoard = UIStoryboard(name: "Main", bundle: nil);
         viewControllers.append(storyBoard.instantiateViewControllerWithIdentifier("UserInfoViewController") as UIViewController)
-        viewControllers.append(storyBoard.instantiateViewControllerWithIdentifier("TwitterViewController") as UIViewController);
+        viewControllers.append(storyBoard.instantiateViewControllerWithIdentifier("TwitterHome") as UIViewController);
         
         
         hideHamburgerMenu()

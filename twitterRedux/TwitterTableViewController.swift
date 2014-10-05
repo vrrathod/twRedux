@@ -12,6 +12,7 @@ class TwitterTableViewController: UITableViewController, UITableViewDataSource, 
     
     // User info
     var userImage:UIImage?
+    var hamburgerMenu:UIBarButtonItem?
     
     // Table data
     var tableData = NSArray()
@@ -51,6 +52,11 @@ class TwitterTableViewController: UITableViewController, UITableViewDataSource, 
         pullHandler.tintColor = UIColor.redColor()
         pullHandler.addTarget(self, action: "updateTweetStream:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(pullHandler)
+        
+        // add hamburger menu
+        var im = UIImage(named: "hamburger")
+        hamburgerMenu = UIBarButtonItem(image: im, style: UIBarButtonItemStyle.Bordered, target: self, action: "didTouchHamburgerMenu")
+        self.navigationItem.leftBarButtonItem = hamburgerMenu;
         
     }
     
@@ -123,6 +129,11 @@ class TwitterTableViewController: UITableViewController, UITableViewDataSource, 
 //        }
     }
     
+    func didTouchHamburgerMenu() {
+        //NOP for now
+    }
+
+
 }
 
 

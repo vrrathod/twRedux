@@ -65,16 +65,6 @@ class TweetDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    // MARK: Interactions
-    @IBAction func doRetweet(sender: UIButton) {
-        TwitterClient.sharedClient.retweet(tweetInfo.tweetID());
-    }
-    
-    @IBAction func doFav(sender: AnyObject) {
-        TwitterClient.sharedClient.favorite(tweetInfo.tweetID())
-    }
-    
 
     /*
     // MARK: - Navigation
@@ -85,5 +75,4 @@ class TweetDetailsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
