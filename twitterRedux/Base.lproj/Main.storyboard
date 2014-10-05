@@ -65,20 +65,8 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ml-Re-4hs" userLabel="ContentView">
                                 <rect key="frame" x="100" y="0.0" width="600" height="600"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTk-mI-CHY">
-                                        <rect key="frame" x="0.0" y="25" width="600" height="565"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.60784316062927246" blue="0.63921570777893066" alpha="1" colorSpace="deviceRGB"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="leading" secondItem="PTk-mI-CHY" secondAttribute="leading" id="4o5-br-nG8"/>
-                                    <constraint firstAttribute="trailing" secondItem="PTk-mI-CHY" secondAttribute="trailing" id="8pE-02-RBO"/>
-                                    <constraint firstAttribute="bottom" secondItem="PTk-mI-CHY" secondAttribute="bottom" constant="10" id="esw-k8-tzH"/>
-                                    <constraint firstItem="PTk-mI-CHY" firstAttribute="top" secondItem="1ml-Re-4hs" secondAttribute="top" constant="25" id="nMq-0v-fok"/>
-                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="gh2-Le-AAx" appends="YES" id="3Jj-61-6d9"/>
                                 </connections>
@@ -99,7 +87,6 @@
                         <outlet property="contentView" destination="1ml-Re-4hs" id="PvR-Ej-vXe"/>
                         <outlet property="contentViewXalignment" destination="XOr-wN-WYq" id="ueX-c1-sbx"/>
                         <outlet property="menuOptions" destination="TQ7-L6-wXa" id="hVI-Pd-7BQ"/>
-                        <outlet property="newContentView" destination="PTk-mI-CHY" id="SOK-Eh-sId"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

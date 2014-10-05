@@ -14,14 +14,13 @@ class ViewController: UIViewController, HamburgerDelegate, ViewSwitcherDelegate 
     // MARK: - UI Outlets
     @IBOutlet weak var contentViewXalignment: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var newContentView: UIView!
     @IBOutlet weak var menuOptions: HamburgerView!
     
     // MARK: - View Collection
     var viewControllers : [UIViewController] = []
     
     // current index
-    var currentIndex:NSInteger = 0;
+    var currentIndex:NSInteger = -1;
     
     
     // MARK: - overrides
@@ -35,9 +34,9 @@ class ViewController: UIViewController, HamburgerDelegate, ViewSwitcherDelegate 
         var storyBoard = UIStoryboard(name: "Main", bundle: nil);
         viewControllers.append(storyBoard.instantiateViewControllerWithIdentifier("UserInfoViewController") as UIViewController)
         viewControllers.append(storyBoard.instantiateViewControllerWithIdentifier("TwitterHome") as UIViewController);
-        
-        
+
         hideHamburgerMenu()
+        switchToViewAtIndex(1)
     }
     
     override func didReceiveMemoryWarning() {
@@ -85,7 +84,8 @@ class ViewController: UIViewController, HamburgerDelegate, ViewSwitcherDelegate 
             if let newVC = activeViewController {
                 self.addChildViewController(newVC)
                 newVC.view.autoresizingMask = .FlexibleWidth | .FlexibleHeight
-                self.newContentView.addSubview(newVC.view)
+                newVC.view.frame = self.contentView.bounds
+                self.contentView.addSubview(newVC.view)
                 newVC.didMoveToParentViewController(self)
             }
         }
