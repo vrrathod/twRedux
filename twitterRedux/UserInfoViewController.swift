@@ -13,12 +13,20 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var profileImage: UIImageView!
     
+    @IBOutlet weak var tweetCount: UILabel!
+    @IBOutlet weak var followerCount: UILabel!
+    @IBOutlet weak var followingCount: UILabel!
+    
+    var itweetCount:NSInteger = 0
+    var ifollowers:NSInteger = 0
+    var ifollowing:NSInteger = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        setImagesWithTimer()
+        setInfoWithTimer()
 
     }
 
@@ -28,10 +36,18 @@ class UserInfoViewController: UIViewController {
     }
     
     
-    func setImagesWithTimer() {
-        NSLog("setting images")
+    func setInfoWithTimer() {
+        NSLog("setting info")
         backgroundImage.image = TwitterClient.sharedClient.userBackgroundImage()
         profileImage.image = TwitterClient.sharedClient.userImage()
+        (itweetCount, ifollowers, ifollowing) = TwitterClient.sharedClient.userStats();
+        
+        tweetCount.text = "\(itweetCount)\nTweets"
+        tweetCount.sizeToFit()
+        followerCount.text = "\(ifollowers)\nFollowers"
+        followerCount.sizeToFit()
+        followingCount.text = "\(ifollowing)\nFollowing"
+        followingCount.sizeToFit()
         
         if backgroundImage.image == nil || profileImage.image == nil {
             NSLog("scheduling timer")

@@ -123,8 +123,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QzA-Dv-3ik">
-                                <rect key="frame" x="16" y="0.0" width="568" height="300"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QzA-Dv-3ik">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A2f-ki-Lic">
                                 <rect key="frame" x="250" y="86" width="100" height="100"/>
@@ -133,20 +133,47 @@
                                     <constraint firstAttribute="height" constant="100" id="Eca-sc-tAi"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8n-mq-eq9">
+                                <rect key="frame" x="26" y="310" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vp-g9-VAP">
+                                <rect key="frame" x="279" y="310" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUk-pd-1VD">
+                                <rect key="frame" x="522" y="310" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="QzA-Dv-3ik" secondAttribute="centerX" id="0of-8O-qU1"/>
                             <constraint firstItem="QzA-Dv-3ik" firstAttribute="top" secondItem="DIH-ae-H3V" secondAttribute="top" id="1bS-JE-eJN"/>
                             <constraint firstAttribute="width" secondItem="QzA-Dv-3ik" secondAttribute="width" id="2Ew-gb-w4W"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rUk-pd-1VD" secondAttribute="trailing" constant="20" id="H1F-dP-ffn"/>
                             <constraint firstItem="cI4-Td-Fpg" firstAttribute="top" secondItem="QzA-Dv-3ik" secondAttribute="bottom" constant="300" id="H70-dO-9YQ"/>
+                            <constraint firstItem="c8n-mq-eq9" firstAttribute="leading" secondItem="DIH-ae-H3V" secondAttribute="leadingMargin" constant="10" id="NWz-y6-eyH"/>
+                            <constraint firstItem="c8n-mq-eq9" firstAttribute="top" secondItem="QzA-Dv-3ik" secondAttribute="bottom" constant="10" id="RIf-XQ-w2i"/>
                             <constraint firstItem="QzA-Dv-3ik" firstAttribute="centerX" secondItem="A2f-ki-Lic" secondAttribute="centerX" id="VkY-7c-udd"/>
+                            <constraint firstAttribute="centerX" secondItem="0vp-g9-VAP" secondAttribute="centerX" id="b3u-UA-u36"/>
+                            <constraint firstItem="0vp-g9-VAP" firstAttribute="top" secondItem="QzA-Dv-3ik" secondAttribute="bottom" constant="10" id="ghI-ON-7AH"/>
+                            <constraint firstItem="rUk-pd-1VD" firstAttribute="top" secondItem="QzA-Dv-3ik" secondAttribute="bottom" constant="10" id="i6r-iP-pk3"/>
                             <constraint firstItem="A2f-ki-Lic" firstAttribute="top" secondItem="wWT-sj-agS" secondAttribute="bottom" constant="66" id="tGM-Fu-Jeh"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backgroundImage" destination="QzA-Dv-3ik" id="5Zn-HY-BuD"/>
+                        <outlet property="followerCount" destination="0vp-g9-VAP" id="2PH-1q-di3"/>
+                        <outlet property="followingCount" destination="rUk-pd-1VD" id="Vzz-Ut-EyG"/>
                         <outlet property="profileImage" destination="A2f-ki-Lic" id="AyF-jk-s73"/>
+                        <outlet property="tweetCount" destination="c8n-mq-eq9" id="VBt-WI-Yx1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nv-G4-niL" userLabel="First Responder" sceneMemberID="firstResponder"/>
