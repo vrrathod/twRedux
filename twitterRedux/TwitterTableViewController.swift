@@ -58,6 +58,8 @@ class TwitterTableViewController: UITableViewController, UITableViewDataSource, 
         hamburgerMenu = UIBarButtonItem(image: im, style: UIBarButtonItemStyle.Bordered, target: self, action: "didTouchHamburgerMenu")
         self.navigationItem.leftBarButtonItem = hamburgerMenu;
         
+        self.navigationItem.title = "Home"
+        
     }
     
     func downloadCurrentUserImage() {
