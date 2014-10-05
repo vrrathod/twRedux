@@ -122,8 +122,32 @@
                     <view key="view" contentMode="scaleToFill" id="DIH-ae-H3V">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QzA-Dv-3ik">
+                                <rect key="frame" x="16" y="0.0" width="568" height="300"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A2f-ki-Lic">
+                                <rect key="frame" x="250" y="86" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="BAK-qx-Mgn"/>
+                                    <constraint firstAttribute="height" constant="100" id="Eca-sc-tAi"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="QzA-Dv-3ik" secondAttribute="centerX" id="0of-8O-qU1"/>
+                            <constraint firstItem="QzA-Dv-3ik" firstAttribute="top" secondItem="DIH-ae-H3V" secondAttribute="top" id="1bS-JE-eJN"/>
+                            <constraint firstAttribute="width" secondItem="QzA-Dv-3ik" secondAttribute="width" id="2Ew-gb-w4W"/>
+                            <constraint firstItem="cI4-Td-Fpg" firstAttribute="top" secondItem="QzA-Dv-3ik" secondAttribute="bottom" constant="300" id="H70-dO-9YQ"/>
+                            <constraint firstItem="QzA-Dv-3ik" firstAttribute="centerX" secondItem="A2f-ki-Lic" secondAttribute="centerX" id="VkY-7c-udd"/>
+                            <constraint firstItem="A2f-ki-Lic" firstAttribute="top" secondItem="wWT-sj-agS" secondAttribute="bottom" constant="66" id="tGM-Fu-Jeh"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backgroundImage" destination="QzA-Dv-3ik" id="5Zn-HY-BuD"/>
+                        <outlet property="profileImage" destination="A2f-ki-Lic" id="AyF-jk-s73"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nv-G4-niL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

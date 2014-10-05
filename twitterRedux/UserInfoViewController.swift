@@ -10,10 +10,16 @@ import UIKit
 
 class UserInfoViewController: UIViewController {
 
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var profileImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        setImagesWithTimer()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,6 +27,17 @@ class UserInfoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func setImagesWithTimer() {
+        NSLog("setting images")
+        backgroundImage.image = TwitterClient.sharedClient.userBackgroundImage()
+        profileImage.image = TwitterClient.sharedClient.userImage()
+        
+        if backgroundImage.image == nil || profileImage.image == nil {
+            NSLog("scheduling timer")
+            NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: "setImagesWithTimer", userInfo: nil, repeats: false)
+        }
+    }
 
     /*
     // MARK: - Navigation

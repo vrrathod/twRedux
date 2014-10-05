@@ -11,7 +11,6 @@ import UIKit
 class TwitterTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
     // User info
-    var userImage:UIImage?
     var hamburgerMenu:UIBarButtonItem?
     
     // Table data
@@ -31,7 +30,6 @@ class TwitterTableViewController: UITableViewController, UITableViewDataSource, 
             self.tableView.reloadData()
             // Once we are done here, we know things are setup appropriately
             // let get current user's image if its not there
-            self.downloadCurrentUserImage()
         } else {
             NSLog("Error! \(error?.localizedDescription)")
         }
@@ -61,26 +59,6 @@ class TwitterTableViewController: UITableViewController, UITableViewDataSource, 
         self.navigationItem.title = "Home"
         
     }
-    
-    func downloadCurrentUserImage() {
-        
-        if nil != userImage {
-            // We've got the image, bail out
-            return
-        }
-        
-        // let get current user's image
-        let url = NSURL( string: TwitterClient.sharedClient.accountImageURL )
-        NSURLSession.sharedSession().downloadTaskWithURL(url, completionHandler: { (localURL, response, error) -> Void in
-            if nil != error {
-                NSLog("Failed to get current user's image: \(error.localizedDescription)");
-            } else {
-                // We've got the url
-                self.userImage = UIImage(data: NSData(contentsOfURL: localURL))
-            }
-        }).resume()
-    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

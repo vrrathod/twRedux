@@ -20,6 +20,10 @@ class TwitterClient {
     var account:ACAccount?
     
     var accountImageURL:String = ""
+    var accountImage:UIImage?
+    
+    var accountBackgroundImageURL:String = ""
+    var accountBackgroundImage:UIImage?
     
     var urlSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration());
     
@@ -80,6 +84,51 @@ class TwitterClient {
         })
     }
     
+    func fetchImageFrom( stringURL:String, inout image:UIImage?) {
+        
+        if( image != nil ) {
+            return;
+        }
+        
+        NSURLSession.sharedSession().downloadTaskWithURL(NSURL(string: stringURL), completionHandler: {
+            (localURL:NSURL!, response:NSURLResponse!, error:NSError!) -> Void in
+            if error != nil {
+                NSLog("Error fetching image : \(error.localizedDescription)");
+            } else {
+                image = UIImage(data: NSData(contentsOfURL: localURL))
+            }
+        }).resume()
+    }
+    
+    func requestAccountImages() {
+        if nil == account {
+            NSLog("Account not setup correctly")
+            return
+        }
+        
+        // fetch account Image first 
+//        fetchImageFrom(accountImageURL, image: &accountImage)
+//        fetchImageFrom(accountBackgroundImageURL, image: &accountBackgroundImage)
+        NSURLSession.sharedSession().downloadTaskWithURL(NSURL(string: accountBackgroundImageURL), completionHandler: {
+            (localURL:NSURL!, response:NSURLResponse!, error:NSError!) -> Void in
+            if error != nil {
+                NSLog("Error fetching image : \(error.localizedDescription)");
+            } else {
+                self.accountBackgroundImage = UIImage(data: NSData(contentsOfURL: localURL))
+            }
+        }).resume()
+        
+        NSURLSession.sharedSession().downloadTaskWithURL(NSURL(string: accountImageURL), completionHandler: {
+            (localURL:NSURL!, response:NSURLResponse!, error:NSError!) -> Void in
+            if error != nil {
+                NSLog("Error fetching image : \(error.localizedDescription)");
+            } else {
+                self.accountImage = UIImage(data: NSData(contentsOfURL: localURL))
+            }
+        }).resume()
+
+    }
+    
     // request current user's image
     func requestAccountImageURL() {
         if nil == account {
@@ -104,6 +153,11 @@ class TwitterClient {
                         var userInfo =
                         NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary;
                         self.accountImageURL = userInfo["profile_image_url"] as String;
+                        self.accountBackgroundImageURL = userInfo["profile_background_image_url"] as String;
+                        
+                        // Now that we have urls, lets fetch images in background
+                        self.requestAccountImages()
+                        
                     } else {
                         NSLog("HTTP Response \(httpResponse.statusCode)");
                     }
@@ -180,8 +234,19 @@ class TwitterClient {
         }
     }
     
-    func userImageURL() -> String {
-        return accountImageURL
+    func userImage() -> UIImage? {
+        if nil == accountImage {
+            requestAccountImageURL()
+        }
+        
+        return accountImage
+    }
+    
+    func userBackgroundImage() -> UIImage? {
+        if nil == accountBackgroundImage {
+            requestAccountImageURL()
+        }
+        return accountBackgroundImage
     }
     
     // --- --- --- --- --- --- ---
