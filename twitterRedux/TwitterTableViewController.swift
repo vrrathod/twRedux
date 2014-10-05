@@ -28,7 +28,6 @@ class TwitterTableViewController: UITableViewController, UITableViewDataSource, 
 //            NSLog("\(dataArray)")
             self.tableData = dataArray // TODO: infinite scrolling!
             self.tableView.reloadData()
-            self.tableView.layoutIfNeeded()
             // Once we are done here, we know things are setup appropriately
             // let get current user's image if its not there
             self.downloadCurrentUserImage()
@@ -87,11 +86,11 @@ class TwitterTableViewController: UITableViewController, UITableViewDataSource, 
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100; //TODO: Back to automatic dimensions
+        return UITableViewAutomaticDimension
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: TwitterTableViewCell = tableView.dequeueReusableCellWithIdentifier(TwitterConstant.twitterTableRowConst) as TwitterTableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(TwitterConstant.twitterTableRowConst) as TwitterTableViewCell
         
         cell.setTweetData(tableData.objectAtIndex(indexPath.row) as NSDictionary)
         cell.sizeToFit()

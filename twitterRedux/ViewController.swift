@@ -20,6 +20,9 @@ class ViewController: UIViewController, HamburgerDelegate, ViewSwitcherDelegate 
     // MARK: - View Collection
     var viewControllers : [UIViewController] = []
     
+    // current index
+    var currentIndex:NSInteger = 0;
+    
     
     // MARK: - overrides
     override func viewDidLoad() {
@@ -61,10 +64,11 @@ class ViewController: UIViewController, HamburgerDelegate, ViewSwitcherDelegate 
     
     //MARK: - View Switcher Delegate
     func switchToViewAtIndex(index: NSInteger) {
-        if index < viewControllers.count {
-            activeViewController = self.viewControllers[index]
+        if index >= viewControllers.count || index == currentIndex {
+            NSLog("We should not change to \(index)");
         } else {
-            NSLog("View not found at \(index)")
+            activeViewController = self.viewControllers[index]
+            currentIndex = index;
         }
     }
     
