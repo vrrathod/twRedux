@@ -97,13 +97,6 @@ class ViewController: UIViewController, HamburgerDelegate, ViewSwitcherDelegate 
     
     
     //MARK: - UI Interactions
-    @IBAction func showHideMenu(sender: UIBarButtonItem) {
-        if isHamburgerMenuVisible() {
-            hideHamburgerMenu()
-        } else {
-            showHamburgerMenu()
-        }
-    }
     
     @IBAction func didSwipe(sender: UISwipeGestureRecognizer) {
         if sender.direction == UISwipeGestureRecognizerDirection.Right {

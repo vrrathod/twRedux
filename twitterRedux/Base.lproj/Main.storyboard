@@ -67,32 +67,17 @@
                                 <rect key="frame" x="100" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTk-mI-CHY">
-                                        <rect key="frame" x="0.0" y="69" width="600" height="521"/>
+                                        <rect key="frame" x="0.0" y="25" width="600" height="565"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="58N-m9-m2U">
-                                        <rect key="frame" x="0.0" y="25" width="600" height="44"/>
-                                        <items>
-                                            <navigationItem title="Home" id="vz5-TS-Lzm">
-                                                <barButtonItem key="leftBarButtonItem" image="hamburger" id="3mo-8f-rp1">
-                                                    <connections>
-                                                        <action selector="showHideMenu:" destination="vXZ-lx-hvc" id="bMg-q2-dBr"/>
-                                                    </connections>
-                                                </barButtonItem>
-                                            </navigationItem>
-                                        </items>
-                                    </navigationBar>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.60784316062927246" blue="0.63921570777893066" alpha="1" colorSpace="deviceRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="leading" secondItem="PTk-mI-CHY" secondAttribute="leading" id="4o5-br-nG8"/>
-                                    <constraint firstItem="PTk-mI-CHY" firstAttribute="centerX" secondItem="58N-m9-m2U" secondAttribute="centerX" id="5ia-2y-T66"/>
-                                    <constraint firstItem="58N-m9-m2U" firstAttribute="top" secondItem="1ml-Re-4hs" secondAttribute="top" constant="25" id="8U5-gU-O8o"/>
-                                    <constraint firstItem="PTk-mI-CHY" firstAttribute="top" secondItem="58N-m9-m2U" secondAttribute="bottom" id="E8C-vz-i5i"/>
-                                    <constraint firstAttribute="trailing" secondItem="58N-m9-m2U" secondAttribute="trailing" id="I7J-6r-vrl"/>
-                                    <constraint firstItem="58N-m9-m2U" firstAttribute="leading" secondItem="1ml-Re-4hs" secondAttribute="leading" id="VZz-wC-iQR"/>
+                                    <constraint firstAttribute="trailing" secondItem="PTk-mI-CHY" secondAttribute="trailing" id="8pE-02-RBO"/>
                                     <constraint firstAttribute="bottom" secondItem="PTk-mI-CHY" secondAttribute="bottom" constant="10" id="esw-k8-tzH"/>
+                                    <constraint firstItem="PTk-mI-CHY" firstAttribute="top" secondItem="1ml-Re-4hs" secondAttribute="top" constant="25" id="nMq-0v-fok"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="gh2-Le-AAx" appends="YES" id="3Jj-61-6d9"/>
@@ -342,7 +327,4 @@
             <point key="canvasLocation" x="1905" y="1280"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="hamburger" width="32" height="32"/>
-    </resources>
 </document>
