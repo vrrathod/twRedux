@@ -14,6 +14,7 @@ class ViewController: UIViewController, HamburgerDelegate, ViewSwitcherDelegate 
     // MARK: - UI Outlets
     @IBOutlet weak var contentViewXalignment: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var newContentView: UIView!
     @IBOutlet weak var menuOptions: HamburgerView!
     
     // MARK: - View Collection
@@ -26,6 +27,12 @@ class ViewController: UIViewController, HamburgerDelegate, ViewSwitcherDelegate 
         // Do any additional setup after loading the view, typically from a nib.
         menuOptions.setHamburgerDelegate(self)
         menuOptions.setViewSwitcherDelegate(self)
+        
+        // Lets load up view controllers
+        var storyBoard = UIStoryboard(name: "Main", bundle: nil);
+        viewControllers.append(storyBoard.instantiateViewControllerWithIdentifier("UserInfoViewController") as UIViewController)
+        viewControllers.append(storyBoard.instantiateViewControllerWithIdentifier("TwitterViewController") as UIViewController);
+        
         
         hideHamburgerMenu()
     }
@@ -74,8 +81,7 @@ class ViewController: UIViewController, HamburgerDelegate, ViewSwitcherDelegate 
             if let newVC = activeViewController {
                 self.addChildViewController(newVC)
                 newVC.view.autoresizingMask = .FlexibleWidth | .FlexibleHeight
-                newVC.view.frame = self.contentView.frame
-                self.view.addSubview(newVC.view)
+                self.newContentView.addSubview(newVC.view)
                 newVC.didMoveToParentViewController(self)
             }
         }
