@@ -23,6 +23,7 @@
 		377DDBA119E105AA00E2DC1A /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377DDB9F19E105AA00E2DC1A /* TwitterClient.swift */; };
 		377DDBA219E105AA00E2DC1A /* TwitterContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377DDBA019E105AA00E2DC1A /* TwitterContants.swift */; };
 		377DDBA419E106CA00E2DC1A /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377DDBA319E106CA00E2DC1A /* UserInfoViewController.swift */; };
+		37D110F319E1BEC2009011E6 /* TweetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D110F219E1BEC2009011E6 /* TweetDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		377DDB9F19E105AA00E2DC1A /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		377DDBA019E105AA00E2DC1A /* TwitterContants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterContants.swift; sourceTree = "<group>"; };
 		377DDBA319E106CA00E2DC1A /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		37D110F219E1BEC2009011E6 /* TweetDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 		377DDB8D19E0EAAA00E2DC1A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				37D110F219E1BEC2009011E6 /* TweetDetailsViewController.swift */,
 				373E98E819E0867E00A80AFA /* ViewController.swift */,
 				377DDB9D19E1056100E2DC1A /* TwitterTableViewController.swift */,
 				377DDBA319E106CA00E2DC1A /* UserInfoViewController.swift */,
@@ -278,6 +281,7 @@
 				377DDBA419E106CA00E2DC1A /* UserInfoViewController.swift in Sources */,
 				377DDB8F19E0EB4600E2DC1A /* HamburgerView.swift in Sources */,
 				377DDB9919E104C400E2DC1A /* TwitterTableViewCell.swift in Sources */,
+				37D110F319E1BEC2009011E6 /* TweetDetailsViewController.swift in Sources */,
 				373E98E919E0867E00A80AFA /* ViewController.swift in Sources */,
 				377DDB9519E1010400E2DC1A /* HamburgerDelegate.swift in Sources */,
 				377DDBA219E105AA00E2DC1A /* TwitterContants.swift in Sources */,

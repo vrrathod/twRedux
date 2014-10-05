@@ -103,16 +103,17 @@ class TwitterTableViewController: UITableViewController, UITableViewDataSource, 
         TwitterClient.sharedClient.getHomeTimeLine(tweetStreamCompletionBlock)
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == TwitterConstant.tweetDetailsSegueName {
-//            let dest = segue.destinationViewController as TweetDetailsViewController
-//            if let cell = sender as? TwitterTableViewCell {
-//                dest.setTweetInfo(cell.tweetInfo)
-//                if let img = cell.userProfileImage.image as UIImage? {
-//                    dest.setUserProfilePic( img )
-//                }
-//            }
-//        } else if segue.identifier == TwitterConstant.twitterNewTweetSegueName {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == TwitterConstant.tweetDetailsSegueName {
+            let dest = segue.destinationViewController as TweetDetailsViewController
+            if let cell = sender as? TwitterTableViewCell {
+                dest.setTweetInfo(cell.tweetInfo)
+                if let img = cell.userProfileImage.image as UIImage? {
+                    dest.setUserProfilePic( img )
+                }
+            }
+        }
+//        else if segue.identifier == TwitterConstant.twitterNewTweetSegueName {
 //            let dest = segue.destinationViewController as ComposeTweetViewController
 //            if nil != userImage {
 //                dest.setUserImage(userImage)
@@ -120,7 +121,7 @@ class TwitterTableViewController: UITableViewController, UITableViewDataSource, 
 //                downloadCurrentUserImage()
 //            }
 //        }
-//    }
+    }
     
 }
 
