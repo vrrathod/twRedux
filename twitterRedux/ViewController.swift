@@ -12,28 +12,35 @@ class ViewController: UIViewController {
     
     // MARK: - UI Outlets
     @IBOutlet weak var contentViewXalignment: NSLayoutConstraint!
+    @IBOutlet weak var contentView: UIView!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         hideHamburgerMenu()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     // MARK: - Sliding adjustment for Content View
     func showHamburgerMenu() {
         // TODO: move 300 to constants
-        self.contentViewXalignment.constant = -250;
+        UIView.animateWithDuration(0.3, animations: {
+            self.contentViewXalignment.constant = -250;
+            self.view.layoutIfNeeded()
+        })
     }
     
     func hideHamburgerMenu() {
-        contentViewXalignment.constant = 0
+        UIView.animateWithDuration(0.3, animations: {
+            self.contentViewXalignment.constant = 0;
+            self.view.layoutIfNeeded()
+        })
     }
     
     func isHamburgerMenuVisible() -> Bool {

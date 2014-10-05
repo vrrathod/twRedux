@@ -24,8 +24,8 @@
                                     <constraint firstAttribute="width" constant="250" id="jz1-5V-s0D"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ml-Re-4hs" userLabel="ContentView">
-                                <rect key="frame" x="100" y="0.0" width="600" height="600"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1ml-Re-4hs" userLabel="ContentView">
+                                <rect key="frame" x="273" y="-15" width="600" height="600"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="58N-m9-m2U">
                                         <rect key="frame" x="0.0" y="25" width="600" height="44"/>
@@ -64,6 +64,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contentView" destination="1ml-Re-4hs" id="PvR-Ej-vXe"/>
                         <outlet property="contentViewXalignment" destination="XOr-wN-WYq" id="ueX-c1-sbx"/>
                     </connections>
                 </viewController>
