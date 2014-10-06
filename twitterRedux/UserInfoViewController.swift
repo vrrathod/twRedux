@@ -17,17 +17,33 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var followerCount: UILabel!
     @IBOutlet weak var followingCount: UILabel!
     
-    var itweetCount:NSInteger = 0
-    var ifollowers:NSInteger = 0
-    var ifollowing:NSInteger = 0
     
+    var userImage:UIImage?
+    var userInfo:TweetUser?;
+    
+    func setTweetUser( userData: NSDictionary ) {
+        userInfo = TweetUser();
+        userInfo!.setUserData(userData)
+    }
+    
+    func setUserImage( img:UIImage ) {
+        userImage = img
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if nil == userInfo {
+            userInfo = TwitterClient.sharedClient.currentUser;
+        }
         
-        setInfoWithTimer()
-
+        updateInfo()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        userImage = nil;
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,33 +52,24 @@ class UserInfoViewController: UIViewController {
     }
     
     
-    func setInfoWithTimer() {
-        NSLog("setting info")
-        backgroundImage.image = TwitterClient.sharedClient.userBackgroundImage()
-        profileImage.image = TwitterClient.sharedClient.userImage()
-        (itweetCount, ifollowers, ifollowing) = TwitterClient.sharedClient.userStats();
+    func updateInfo() {
         
-        tweetCount.text = "\(itweetCount)\nTweets"
-        tweetCount.sizeToFit()
-        followerCount.text = "\(ifollowers)\nFollowers"
-        followerCount.sizeToFit()
-        followingCount.text = "\(ifollowing)\nFollowing"
-        followingCount.sizeToFit()
-        
-        if backgroundImage.image == nil || profileImage.image == nil {
-            NSLog("scheduling timer")
-            NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: "setImagesWithTimer", userInfo: nil, repeats: false)
+        if nil == userInfo {
+            NSLog("Something messed up has happend!");
+            return;
         }
+        
+        tweetCount.text = "\(userInfo!.tweetCount())\nTweets";  tweetCount.sizeToFit()
+        followerCount.text = "\(userInfo!.followerCount())\nFollowers";  followerCount.sizeToFit()
+        followingCount.text = "\(userInfo!.followingCount())\nFollowing"; followingCount.sizeToFit()
+        
+        profileImage.image = userImage; profileImage.layoutIfNeeded()
+        
+        // load images
+        TwitterClient.sharedClient.fetchImageFrom(userInfo!.userBackgroundImageURL(), onComplete: { (image) -> Void in
+            self.backgroundImage.image = image;
+            self.backgroundImage.layoutIfNeeded()
+        });
+        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

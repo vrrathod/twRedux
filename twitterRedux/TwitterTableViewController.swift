@@ -98,21 +98,24 @@ class TwitterTableViewController: UITableViewController, UITableViewDataSource, 
                     dest.setUserProfilePic( img )
                 }
             }
+        } else if segue.identifier == TwitterConstant.showUserDetails {
+            let dest = segue.destinationViewController as UserInfoViewController
+            let gesture = sender as UITapGestureRecognizer
+            let view = gesture.view as UIImageView?
+            let superView = view?.superview
+            if let cell = superView?.superview as? TwitterTableViewCell {
+                dest.setTweetUser( cell.tweetInfo.userData )
+                if let img = cell.userProfileImage.image as UIImage? {
+                    dest.setUserImage(img)
+                }
+                
+            }
         }
-//        else if segue.identifier == TwitterConstant.twitterNewTweetSegueName {
-//            let dest = segue.destinationViewController as ComposeTweetViewController
-//            if nil != userImage {
-//                dest.setUserImage(userImage)
-//            } else {
-//                downloadCurrentUserImage()
-//            }
-//        }
     }
     
     func didTouchHamburgerMenu() {
         //NOP for now
     }
-
 
 }
 

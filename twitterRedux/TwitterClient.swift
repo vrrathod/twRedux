@@ -19,15 +19,9 @@ class TwitterClient {
     let accountType:ACAccountType?
     var account:ACAccount?
     
-    var accountImageURL:String = ""
     var accountImage:UIImage?
-    
-    var accountBackgroundImageURL:String = ""
     var accountBackgroundImage:UIImage?
-    
-    var tweetCount:NSInteger = 0
-    var followers:NSInteger = 0
-    var follows:NSInteger = 0
+    var currentUser:TweetUser = TweetUser();
     
     var urlSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration());
     
@@ -88,14 +82,13 @@ class TwitterClient {
         })
     }
     
-    func fetchImageFrom( stringURL:String, onComplete:((image:UIImage?)->Void)? ) {
+    func fetchImageFrom( url:NSURL, onComplete:((image:UIImage?)->Void)? ) {
         
-         NSURLSession.sharedSession().downloadTaskWithURL(NSURL(string: stringURL), completionHandler: {
+         NSURLSession.sharedSession().downloadTaskWithURL(url, completionHandler: {
             (localURL:NSURL!, response:NSURLResponse!, error:NSError!) -> Void in
             if error != nil {
                 NSLog("Error fetching image : \(error.localizedDescription)");
             } else {
-//                image = UIImage(data: NSData(contentsOfURL: localURL))
                 if( nil != onComplete ) {
                     onComplete!( image: UIImage(data: NSData(contentsOfURL: localURL)) )
                 }
@@ -110,32 +103,13 @@ class TwitterClient {
         }
         
         // fetch account Image first 
-        fetchImageFrom(accountImageURL, onComplete: { (image) -> Void in
+        fetchImageFrom(currentUser.userImageURL(), onComplete: { (image) -> Void in
             self.accountImage = image
         });
         
-        fetchImageFrom(accountBackgroundImageURL, onComplete: { (image) -> Void in
+        fetchImageFrom(currentUser.userBackgroundImageURL(), onComplete: { (image) -> Void in
             self.accountBackgroundImage = image;
         })
-
-//        NSURLSession.sharedSession().downloadTaskWithURL(NSURL(string: accountBackgroundImageURL), completionHandler: {
-//            (localURL:NSURL!, response:NSURLResponse!, error:NSError!) -> Void in
-//            if error != nil {
-//                NSLog("Error fetching image : \(error.localizedDescription)");
-//            } else {
-//                self.accountBackgroundImage = UIImage(data: NSData(contentsOfURL: localURL))
-//            }
-//        }).resume()
-//        
-//        NSURLSession.sharedSession().downloadTaskWithURL(NSURL(string: accountImageURL), completionHandler: {
-//            (localURL:NSURL!, response:NSURLResponse!, error:NSError!) -> Void in
-//            if error != nil {
-//                NSLog("Error fetching image : \(error.localizedDescription)");
-//            } else {
-//                self.accountImage = UIImage(data: NSData(contentsOfURL: localURL))
-//            }
-//        }).resume()
-
     }
     
     // request current user's image
@@ -161,13 +135,7 @@ class TwitterClient {
                     if (httpResponse.statusCode >= 200 && httpResponse.statusCode < 300) {
                         var userInfo =
                         NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary;
-                        self.accountImageURL = userInfo["profile_image_url"] as String;
-                        self.accountBackgroundImageURL = userInfo["profile_background_image_url"] as String;
-                        
-                        // other info
-                        self.followers = userInfo["followers_count"] as NSInteger;
-                        self.follows = userInfo["friends_count"] as NSInteger
-                        self.tweetCount = userInfo["statuses_count"] as NSInteger
+                        self.currentUser.setUserData(userInfo);
                         
                         // Now that we have urls, lets fetch images in background
                         self.requestAccountImages()
@@ -264,7 +232,7 @@ class TwitterClient {
     }
     
     func userStats() -> (count:NSInteger, follows:NSInteger, followers:NSInteger) {
-        return (tweetCount, follows, followers)
+        return (currentUser.tweetCount(), currentUser.followingCount(), currentUser.followerCount())
     }
     
     // --- --- --- --- --- --- ---

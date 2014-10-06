@@ -28,6 +28,12 @@ class TwitterConstant {
         }
     }
     
+    class var showUserDetails:String {
+        get {
+            return "showUserDetails"
+        }
+    }
+    
     class var home_timeLine:String {
         get{
             return "https://api.twitter.com/1.1/statuses/home_timeline.json"
