@@ -10,6 +10,7 @@ import Foundation
 
 class TweetUser {
     private var userData:NSDictionary = NSDictionary();
+
     
     func setUserData( userInfo : NSDictionary ) {
         userData = userInfo

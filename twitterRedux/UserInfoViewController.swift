@@ -36,6 +36,7 @@ class UserInfoViewController: UIViewController {
         // Do any additional setup after loading the view.
         if nil == userInfo {
             userInfo = TwitterClient.sharedClient.currentUser;
+
         }
         
         updateInfo()
@@ -63,7 +64,11 @@ class UserInfoViewController: UIViewController {
         followerCount.text = "\(userInfo!.followerCount())\nFollowers";  followerCount.sizeToFit()
         followingCount.text = "\(userInfo!.followingCount())\nFollowing"; followingCount.sizeToFit()
         
-        profileImage.image = userImage; profileImage.layoutIfNeeded()
+        TwitterClient.sharedClient.fetchImageFrom(userInfo!.userImageURL(), onComplete: { (image) -> Void in
+            self.profileImage.image = image;
+            self.profileImage.layoutIfNeeded()
+        })
+        
         
         // load images
         TwitterClient.sharedClient.fetchImageFrom(userInfo!.userBackgroundImageURL(), onComplete: { (image) -> Void in
