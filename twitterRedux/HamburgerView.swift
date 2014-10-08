@@ -11,14 +11,9 @@ import UIKit
 class HamburgerView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Delegates as Variables
-    var hamburgerHandler : HamburgerDelegate?
     var viewSwitcherHandler: ViewSwitcherDelegate?
     
     // MARK: - Delegates setters
-    func setHamburgerDelegate( hamburger:HamburgerDelegate ) {
-        hamburgerHandler = hamburger
-    }
-    
     func setViewSwitcherDelegate( viewSwitcher: ViewSwitcherDelegate ) {
         viewSwitcherHandler = viewSwitcher
     }
@@ -53,10 +48,7 @@ class HamburgerView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        hamburgerHandler?.hideHamburgerMenu()
-        
-        // TODO: select appropriate view in the main view
-        NSLog("switching to view at index \(indexPath.row)")
+        NSNotificationCenter.defaultCenter().postNotificationName(TwitterConstant.NotificationHamburgerHide, object: nil)
         viewSwitcherHandler?.switchToViewAtIndex(indexPath.row)
     }
 

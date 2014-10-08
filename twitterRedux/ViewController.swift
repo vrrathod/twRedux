@@ -9,7 +9,7 @@
 import UIKit
 
 // View controller code
-class ViewController: UIViewController, HamburgerDelegate, ViewSwitcherDelegate {
+class ViewController: UIViewController, ViewSwitcherDelegate {
     
     // MARK: - UI Outlets
     @IBOutlet weak var contentViewXalignment: NSLayoutConstraint!
@@ -27,7 +27,7 @@ class ViewController: UIViewController, HamburgerDelegate, ViewSwitcherDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        menuOptions.setHamburgerDelegate(self)
+//        menuOptions.setHamburgerDelegate(self)
         menuOptions.setViewSwitcherDelegate(self)
         
         // Lets load up view controllers
@@ -35,6 +35,10 @@ class ViewController: UIViewController, HamburgerDelegate, ViewSwitcherDelegate 
         viewControllers.append(storyBoard.instantiateViewControllerWithIdentifier("UserInfoViewController") as UIViewController)
         viewControllers.append(storyBoard.instantiateViewControllerWithIdentifier("TwitterHome") as UIViewController);
 
+        // add observers for hamburgermenu
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showHamburgerMenu", name: TwitterConstant.NotificationHamburgerShow, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideHamburgerMenu", name: TwitterConstant.NotificationHamburgerHide, object: nil)
+        
         hideHamburgerMenu()
         switchToViewAtIndex(1)
     }

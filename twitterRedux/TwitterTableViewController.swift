@@ -19,6 +19,7 @@ class TwitterTableViewController: UITableViewController, UITableViewDataSource, 
     // Pull handler
     var pullHandler:UIRefreshControl = UIRefreshControl();
     var isPulled = false;
+    var isShowingMenu = false;
     
     // MARK: - Overrides and Blocks
     
@@ -53,7 +54,7 @@ class TwitterTableViewController: UITableViewController, UITableViewDataSource, 
         
         // add hamburger menu
         var im = UIImage(named: "hamburger")
-        hamburgerMenu = UIBarButtonItem(image: im, style: UIBarButtonItemStyle.Bordered, target: self, action: "didTouchHamburgerMenu")
+        hamburgerMenu = UIBarButtonItem(image: im, style: UIBarButtonItemStyle.Bordered, target: self, action: "didTouchHamburgerMenu:")
         self.navigationItem.leftBarButtonItem = hamburgerMenu;
         
         self.navigationItem.title = "Home"
@@ -113,8 +114,16 @@ class TwitterTableViewController: UITableViewController, UITableViewDataSource, 
         }
     }
     
-    func didTouchHamburgerMenu() {
+    func didTouchHamburgerMenu( sender: AnyObject) {
         //NOP for now
+        
+        if isShowingMenu {
+            NSNotificationCenter.defaultCenter().postNotificationName(TwitterConstant.NotificationHamburgerHide, object: nil)
+            isShowingMenu = false;
+        } else {
+            NSNotificationCenter.defaultCenter().postNotificationName(TwitterConstant.NotificationHamburgerShow, object: nil)
+            isShowingMenu = true;
+        }
     }
 
 }

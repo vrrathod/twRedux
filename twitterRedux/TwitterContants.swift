@@ -69,4 +69,16 @@ class TwitterConstant {
             return "https://api.twitter.com/1.1/users/show.json?screen_name=";
         }
     }
+    
+    class var NotificationHamburgerShow: String {
+        get {
+            return "ShowHamburgerMenu"
+        }
+    }
+    
+    class var NotificationHamburgerHide: String {
+        get {
+            return "HideHamburgerMenu"
+        }
+    }
 }
